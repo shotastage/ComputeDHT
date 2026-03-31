@@ -41,3 +41,7 @@ artifacts/
 .idea/
 
 .compute-dht/
+
+compute-swift/.build/
+compute-swift/.package/
+compute-swift/.swiftpm/

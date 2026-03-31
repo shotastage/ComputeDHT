@@ -25,6 +25,9 @@ let package = Package(
             name: "ComputeDHT",
             dependencies: [.product(name: "WasmKit", package: "WasmKit")],
         ),
+        .target(
+            name: "CBreeze"
+        ),
         .testTarget(
             name: "ComputeDHTTests",
             dependencies: ["ComputeDHT"]
