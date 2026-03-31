@@ -12,6 +12,9 @@ let package = Package(
             targets: ["ComputeDHT"]
         ),
     ],
+    dependencies: [
+        .package(url: "https://github.com/swiftwasm/WasmKit.git", .upToNextMinor(from: "0.2.1")),
+    ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
