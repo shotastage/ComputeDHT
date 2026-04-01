@@ -61,7 +61,7 @@ open class SocketClient {
         semaphore.wait()
     }
 
-    func receive(action: @escaping (Data) -> Void) {
+    func receive(action: @Sendable @escaping (Data) -> Void) {
         let semaphore = DispatchSemaphore(value: 0)
 
         conn?.receive(minimumIncompleteLength: 0, maximumLength: 65535, completion: { data, _, _, error in

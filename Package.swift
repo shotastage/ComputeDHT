@@ -9,26 +9,52 @@ let package = Package(
         .macOS(.v14)
     ],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "ComputeDHT",
             targets: ["ComputeDHT"]
         ),
+        .library(
+            name: "OverlayFundation",
+            targets: ["OverlayFundation"]
+        ),
+        .library(
+            name: "OverlayDHT",
+            targets: ["OverlayDHT"]
+        ),
+        .library(
+            name: "CoreOverlay",
+            targets: ["CoreOverlay"]
+        ),
+        .executable(
+            name: "cot",
+            targets: ["CLI"]
+        ),
     ],
     dependencies: [
-        .package(url: "https://github.com/swiftwasm/WasmKit.git", .upToNextMinor(from: "0.2.1")),
         .package(url: "https://github.com/apple/swift-argument-parser", from: "1.7.1"),
         .package(url: "https://github.com/weichsel/ZIPFoundation.git", .upToNextMajor(from: "0.9.20")),
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "ComputeDHT",
-            dependencies: [.product(name: "WasmKit", package: "WasmKit")],
+            name: "ComputeDHT"
         ),
         .target(
-            name: "CBreeze"
+            name: "CBreeze",
+            exclude: ["README.md"]
+        ),
+        .target(
+            name: "OverlayFundation"
+        ),
+        .target(
+            name: "OverlayDHT"
+        ),
+        .target(
+            name: "CoreOverlay",
+            dependencies: [
+                "OverlayFundation",
+                "OverlayDHT",
+                "CBreeze",
+            ]
         ),
         .executableTarget(
             name: "CLI",
@@ -40,6 +66,13 @@ let package = Package(
         .testTarget(
             name: "ComputeDHTTests",
             dependencies: ["ComputeDHT"]
+        ),
+        .testTarget(
+            name: "CoreOverlayTests",
+            dependencies: [
+                "CoreOverlay",
+                "OverlayFundation",
+            ]
         ),
     ],
     swiftLanguageModes: [.v6]

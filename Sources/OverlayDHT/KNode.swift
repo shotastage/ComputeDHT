@@ -72,6 +72,7 @@ struct Node {
 
 extension Node {
     func distance(to other: NodeID) -> Int {
-        return self.id ^ other.id
+        let distance = xorDistance(self.id, other)
+        return distance.reduce(0) { ($0 << 8) | Int($1) }
     }
 }

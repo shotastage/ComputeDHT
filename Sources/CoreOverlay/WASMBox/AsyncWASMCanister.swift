@@ -17,8 +17,7 @@ actor WasmBoxActor {
 
 extension WasmBoxActor {
     func asyncOperation() async -> Int {
-        // Perform some asynchronous operation
-        await Task.sleep(UInt64(1_000_000_000)) // Sleep for 1 second
+        try? await Task.sleep(nanoseconds: 1_000_000_000)
         internalValue += 1
         return internalValue
     }

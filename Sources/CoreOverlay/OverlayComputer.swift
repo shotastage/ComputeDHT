@@ -7,7 +7,6 @@
 
 import Foundation
 import OverlayFundation
-import Runtime
 
 open class OverlayComputer {
     /// storedObject is gathered instance
@@ -15,14 +14,14 @@ open class OverlayComputer {
     var package: URL?
 
     public init() {
-        storedObject.receivers.updateValue(KademliaNode(nodeId: 1234), forKey: "genesis")
-        storedObject.servers.updateValue(KademliaNode(nodeId: 1235), forKey: "genesis")
+        storedObject.receivers.updateValue(1234, forKey: "genesis")
+        storedObject.servers.updateValue(1235, forKey: "genesis")
         package = nil
     }
 
     public init(location: URL) {
-        storedObject.receivers.updateValue(KademliaNode(nodeId: 1234), forKey: "genesis")
-        storedObject.servers.updateValue(KademliaNode(nodeId: 1235), forKey: "genesis")
+        storedObject.receivers.updateValue(1234, forKey: "genesis")
+        storedObject.servers.updateValue(1235, forKey: "genesis")
         package = location
     }
 
@@ -32,13 +31,9 @@ open class OverlayComputer {
 
     public func start() {
         COLogger.info("Starting CoreOverlay internal server...")
-        
-        do {
-            //let wasm = try WASMModule(module: package!)
-            //try! wasm.execute("main")
-        } catch {
-            print("Failed to register WASM artifcats.")
-        }
+
+        //let wasm = try WASMModule(module: package!)
+        //try wasm.execute("main")
     }
 
     public func shutdown() {
@@ -51,7 +46,7 @@ open class OverlayComputer {
 }
 
 public struct OverlayComputerSharedInstances {
-    var runnder: [String: WASMCanister]
-    var receivers: [String: KademliaNode]
-    var servers: [String: KademliaNode]
+    var runnder: [String: Any]
+    var receivers: [String: Int]
+    var servers: [String: Int]
 }
