@@ -44,7 +44,7 @@ let package = Package(
             exclude: ["README.md"]
         ),
         .target(
-            name: "COBox",
+            name: "COCapsule",
             dependencies: [
                 .product(name: "WasmKit", package: "WasmKit"),
             ]
