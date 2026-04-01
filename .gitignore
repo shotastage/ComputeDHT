@@ -45,3 +45,7 @@ artifacts/
 compute-swift/.build/
 compute-swift/.package/
 compute-swift/.swiftpm/
+
+
+*/**/.zig-cache/
+*/**/.zig-out/
