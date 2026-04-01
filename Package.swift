@@ -44,7 +44,7 @@ let package = Package(
             exclude: ["README.md"]
         ),
         .target(
-            name: "COCapsule",
+            name: "CoreRuntime",
             dependencies: [
                 .product(name: "WasmKit", package: "WasmKit"),
             ]
