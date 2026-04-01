@@ -26,13 +26,14 @@ let package = Package(
             targets: ["CoreOverlay"]
         ),
         .executable(
-            name: "cot",
-            targets: ["CLI"]
+            name: "OverlayCLI",
+            targets: ["OverlayCLI"]
         ),
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-argument-parser", from: "1.7.1"),
         .package(url: "https://github.com/weichsel/ZIPFoundation.git", .upToNextMajor(from: "0.9.20")),
+        .package(url: "https://github.com/swiftwasm/WasmKit.git", .upToNextMinor(from: "0.2.1")),
     ],
     targets: [
         .target(
@@ -41,6 +42,12 @@ let package = Package(
         .target(
             name: "CBreeze",
             exclude: ["README.md"]
+        ),
+        .target(
+            name: "COBox",
+            dependencies: [
+                .product(name: "WasmKit", package: "WasmKit"),
+            ]
         ),
         .target(
             name: "OverlayFundation"
@@ -57,7 +64,7 @@ let package = Package(
             ]
         ),
         .executableTarget(
-            name: "CLI",
+            name: "OverlayCLI",
             dependencies: [
                 .product(name: "ArgumentParser", package: "swift-argument-parser"),
                 .product(name: "ZIPFoundation", package: "ZIPFoundation"),
