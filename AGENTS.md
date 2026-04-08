@@ -34,6 +34,7 @@
 
 - Follow `.editorconfig`: use spaces by default, use 4-space indentation in Rust, and preserve tabs in `Makefile`-style files.
 - Match existing naming patterns. Swift types use PascalCase, Rust functions and modules use snake_case.
+- For Swift code, write clear Xcode Quick Help style documentation comments (`///`) for types, methods, and non-trivial logic so other engineers can understand the implementation quickly during review.
 - Preserve established project terminology and prefixes such as `K*` for Kademlia-related Swift types and `CO*` for CoreOverlay utility types where existing code already uses them.
 - Avoid broad refactors, mass renames, or formatting-only edits unless explicitly requested.
 
